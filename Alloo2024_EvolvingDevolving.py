@@ -592,7 +592,7 @@ prop = 0.7*10**6 # [microns]
 pixel_size = 6.5 # [microns]
 savedir = r'C:\Users\sall0037\Documents\DiscoveryProject_FokkerPlanck\Manuscripts\OpticsExpress_EvolvingDevolving2024\GitHub\Python Scripts to Retrieve Images\FouRod_RetrievedSignals'
 
-ff = np.double(np.asarray(Image.open('FF_1m.tif')))[870:1300,140:2360] # Cropping required to get just illuminated field-of-view
+ff = np.double(np.asarray(Image.open('Flatfield.tif')))[870:1300,140:2360] # Cropping required to get just illuminated field-of-view
 rows, columns = ff.shape
 
 Ir = np.empty([int(num_masks),int(rows),int(columns)])
@@ -602,8 +602,8 @@ for k in range(1,int(num_masks+1)):
         i = str(k)
         # -------------------------------------------------------------------------
         # Reading in data: change string for start of filename as required
-        ir = np.double(np.asarray(Image.open('Ref{}.tif'.format(str(i)))))[870:1300,140:2360]
-        isa = np.double(np.asarray(Image.open('Sam{}.tif'.format(str(i)))))[870:1300,140:2360]
+        ir = np.double(np.asarray(Image.open('ReferenceSpeckle_{}.tif'.format(str(i)))))[870:1300,140:2360]
+        isa = np.double(np.asarray(Image.open('SamplePlusSpeckle_{}.tif'.format(str(i)))))[870:1300,140:2360]
 
         ir = (ir-dc)/(ff-dc)
         isa = (isa-dc)/(ff-dc)
